@@ -1,0 +1,7 @@
+CHANGELOG
+
+1.2.0
+=====
+
+* Remove apache requirement. 
+* Add mrepo specific user creation.

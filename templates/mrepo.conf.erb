@@ -1,0 +1,16 @@
+# This file is managed by puppet. Any changes to this file will be
+# overwritten the next time puppet runs. Update with caution!
+[main]
+srcdir  = <%= scope.lookupvar('mrepo::params::src_root') %>
+wwwdir  = <%= scope.lookupvar('mrepo::params::www_root') %>
+confdir = /etc/mrepo.conf.d
+
+<% if scope.lookupvar('mrepo::params::rhn_username') and scope.lookupvar('mrepo::params::rhn_password') -%>
+rhnlogin = <%= scope.lookupvar('mrepo::params::rhn_username') %>:<%= scope.lookupvar('mrepo::params::rhn_password') %>
+<% elsif scope.lookupvar('mrepo::params::rhn_username') -%>
+rhnlogin = <%= scope.lookupvar('mrepo::params::rhn_username') %>
+<% end -%>
+
+<% unless (mailto = scope.lookupvar('mrepo::params::mailto')) == 'UNSET' -%>
+mailto = <%= mailto %>
+<% end -%>
